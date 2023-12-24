@@ -36,6 +36,20 @@
       "when": 1703412701956,
       "tag": "0004_demonic_demogoblin",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1703412866057,
+      "tag": "0005_freezing_susan_delgado",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1703426432525,
+      "tag": "0006_curved_makkari",
+      "breakpoints": true
     }
   ]
 }
