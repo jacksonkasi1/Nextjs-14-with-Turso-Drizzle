@@ -1,11 +1,10 @@
 import { db } from "@/db";
-import { users, profile } from "@/db/schema/users";
+import { users, profile, Users, Profile } from "@/db/schema/users";
 
 export async function POST(req: Request) {
   const body = await req.json(); // Assuming body is an array of user objects
 
   console.log(body);
-
 
   // Start a transaction
   const response = await db.transaction(async (trx) => {
@@ -13,7 +12,7 @@ export async function POST(req: Request) {
     const insertedUsers = await trx
       .insert(users)
       .values(
-        body.map((user: { name: string; email: string }) => ({
+        body.map((user: Users) => ({
           name: user.name,
           email: user.email,
         })),
@@ -25,7 +24,7 @@ export async function POST(req: Request) {
     }
 
     // Prepare profile data with corresponding user IDs
-    const profileData = body.map((user: any, index: number) => ({
+    const profileData = body.map((user: Profile, index: number) => ({
       bio: user.bio,
       userId: insertedUsers[index].id, // Mapping user ID to profile
     }));
